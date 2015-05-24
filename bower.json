@@ -1,0 +1,21 @@
+{
+  "name": "ericandre",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ericandre615/ericandresite",
+  "authors": [
+    "Eric Andre <eric@meetidesign.com>"
+  ],
+  "description": "Eric Andre .info personal site",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kickback": "https://github.com/ericandre615/kickback.git",
+    "timemap": "https://github.com/ericandre615/timemap.git"
+  }
+}
