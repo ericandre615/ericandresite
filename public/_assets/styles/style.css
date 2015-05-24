@@ -1,8 +1,46 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ul {
+  list-style: none;
 }
 
-a {
-  color: #00B7FF;
+header[role="banner"] {
+  width: 100%;
+  height: 300px;
+  background: #eaeaea url('../img/top_color.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+nav[role="navigation"] {
+  width: 100%;
+  height: 40px;
+  padding: 12px;
+  background-color: #101112;
+  z-index: 9999;
+  box-shadow: 0px 0px 5px 1px black;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#avatar {
+  width: 40px;
+  height: auto;
+}
+ul[role="menubar"] {
+  display: inline-block;
+  list-style: none;
+  position: absolute;
+  top: 0;
+  right: 30px;
+  padding-right: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: right;
+  width: 90%;
+}
+ul[role="menubar"] li {
+  display: inline;
+}
+ul[role="menubar"] li a {
+  text-decoration: none;
+  color: white;
 }

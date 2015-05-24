@@ -14,8 +14,12 @@ html(class='no-js', lang="en")
     script(src='_assets/js/vendor/modernizr-2.8.3.min.js')
 
   body
- 
-    block content
+
+    include ./partials/navigation.jade
+
+    main.container(role="main")
+
+        block content
 
     script(src='_assets/js/main.min.js')
 

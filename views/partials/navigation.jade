@@ -1,0 +1,16 @@
+// - partials/navigation.jade
+
+mixin navItem(href, item)
+    li(role="menuitem")
+        a(href=href) #{item}
+
+header#masthead(role="banner")
+
+    nav#main-nav(role="navigation")
+        a(href="/")
+            img#avatar(src="_assets/img/avatar.jpg", alt="Eric Andre avatar")
+        ul(role="menubar")
+            +navItem('/', 'Home')
+            +navItem('/about', 'About')
+            +navItem('/work', 'Work')
+            +navItem('/projects', 'Projects')
