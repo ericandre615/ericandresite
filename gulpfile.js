@@ -49,6 +49,7 @@ gulp.task('scripts', function() {
             'src/js/lib/plugins.js',
             'src/js/lib/timemap.js',
             'src/js/lib/kickback.js',
+            'src/js/scrollables.js',
             'src/js/main.js'
         ])
         .pipe(sourcemaps.init())
