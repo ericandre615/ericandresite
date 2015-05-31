@@ -2,6 +2,16 @@ ul {
   list-style: none;
 }
 
+section {
+  background-color: #ffffff;
+  -webkit-transition: all 1.5s ease;
+          transition: all 1.5s ease;
+}
+section.in-view {
+  -webkit-transition: all 1.5s ease;
+          transition: all 1.5s ease;
+  background-color: #95b2cb;
+}
 header[role="banner"] {
   width: 100%;
   height: 300px;
@@ -19,6 +29,13 @@ nav[role="navigation"] {
   position: fixed;
   top: 0;
   left: 0;
+  -webkit-transition: all 1s ease;
+          transition: all 1s ease;
+}
+nav[role="navigation"].hide-nav {
+  top: -64px;
+  -webkit-transition: all 1s ease;
+          transition: all 1s ease;
 }
 #avatar {
   width: 40px;

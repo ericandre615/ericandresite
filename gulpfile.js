@@ -46,10 +46,12 @@ gulp.task('scripts', function() {
     //setup concat + minification
     // to run for all js files use 'app/src/scripts/*.js'
     return gulp.src([
+            'src/js/lib/polyfills.js',
             'src/js/lib/plugins.js',
             'src/js/lib/timemap.js',
             'src/js/lib/kickback.js',
             'src/js/scrollables.js',
+            'src/js/smooth-scroll.js',
             'src/js/main.js'
         ])
         .pipe(sourcemaps.init())

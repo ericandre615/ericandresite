@@ -6,7 +6,14 @@
         cacheScrollPos = 0;
 
     var navmenu = document.querySelector('ul[role="menubar"]'),
+        menubar = document.getElementById('main-nav'),
         masthead = document.getElementById('masthead');
+
+    var sections = [
+            '#about',
+            '#work',
+            '#projects'
+        ];
 
     var initialBGColor = '#eaeaea',
         bGColor_1 = '#AFB4D8',
@@ -25,6 +32,26 @@
         console.log('scrolling stopped');
     }
 
+    function isElementVisible(elem) {
+        if(typeof elem === 'string') {
+            elem = document.querySelector(elem);
+        }
+        
+        var rect = elem.getBoundingClientRect();
+        
+        if(rect.top > window.innerHeight || rect.bottom < 0) {
+            console.log(elem, 'is NOT in view');
+            if(elem.classList.contains('in-view')) {
+                elem.classList.remove('in-view');
+            }
+            return false;
+        } else {
+            console.log(elem, 'is in view');
+            elem.classList.add('in-view');
+            return true;
+        }
+    }
+
     window.onscroll = function detectScroll(e) {
         if(scrollTimer != null) {
             clearTimeout(scrollTimer);
@@ -35,10 +62,12 @@
         } 
 
         if(cacheScrollPos < window.scrollY) {
-            console.log('scroll down');
+            //scrolling down 
+            menubar.classList.add('hide-nav');
         }
         if(cacheScrollPos > window.scrollY) {
-            console.log('scroll up');
+            //scrolling up
+            menubar.classList.remove('hide-nav');
         }
 
         scrollTimer = setTimeout(handleScroll, 1500);
@@ -52,16 +81,10 @@
         if(window.scrollY >= 81 && window.scrollY <= 100) { masthead.style.backgroundColor = bGColor_5; }
         if(window.scrollY >= 101 && window.scrollY <= 120) { masthead.style.backgroundColor = bGColor_6; }
         if(window.scrollY >= 121) { masthead.style.backgroundColor = initialBGColor; }
+
+        sections.forEach(function(elem) {
+            isElementVisible(elem);
+        });
     };
-
-    navmenu.addEventListener('click', function(e) {
-        if(e.target && e.target.nodeName == 'A') { 
-            e.preventDefault();
-            var itemID = e.target.getAttribute('href').replace('/', '');
-            var itemSection = document.getElementById(itemID);
-
-            itemSection.scrollIntoView(true);
-        }
-    });
 
 })(window);

@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "kickback": "https://github.com/ericandre615/kickback.git",
-    "timemap": "https://github.com/ericandre615/timemap.git"
+    "timemap": "https://github.com/ericandre615/timemap.git",
+    "smoothscroll": "https://github.com/ericandre615/smoothscroll.git"
   }
 }

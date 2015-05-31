@@ -3,6 +3,16 @@
 @zindexLayerTop: 9999;
 @shadowLayer1: 0px 0px 5px 1px black;
 
+section {
+    background-color:rgb(255, 255, 255);
+    transition:all 1.5s ease;
+}
+
+section.in-view {
+    transition:all 1.5s ease;
+    background-color:rgb(149, 178, 203);
+}
+
 header[role="banner"] {
     width:100%;
     height:300px;
@@ -21,6 +31,12 @@ nav[role="navigation"] {
     position: fixed;
     top:0;
     left:0;
+    transition: all 1s ease;
+}
+
+nav[role="navigation"].hide-nav {
+    top:-64px;
+    transition: all 1s ease; 
 }
 
 #avatar {
