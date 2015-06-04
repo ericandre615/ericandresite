@@ -1,0 +1,11 @@
+// - partials/footer.jade
+
+footer(role="contentinfo")
+
+  form#contact.container(method="POST", action="/contact")
+    input(type="text", name="name_full")
+    input(type="email", name="email")
+    textarea(name="msg")
+    button(type="submit" value="Send") Send
+
+  p site by Eric Andre. copyright &copy; 2015. Nashville, TN

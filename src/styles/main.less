@@ -1,7 +1,13 @@
 @dark: #101112;
+@footerColor : #4D4B61;
 @zindexLayer2: 10;
 @zindexLayerTop: 9999;
 @shadowLayer1: 0px 0px 5px 1px black;
+
+.container {
+  max-width:1024px;
+  margin:0 auto;
+}
 
 section {
     background-color:rgb(255, 255, 255);
@@ -36,7 +42,7 @@ nav[role="navigation"] {
 
 nav[role="navigation"].hide-nav {
     top:-64px;
-    transition: all 1s ease; 
+    transition: all 1s ease;
 }
 
 #avatar {
@@ -64,4 +70,9 @@ ul[role="menubar"] {
             color: white;
         }
     }
+}
+
+footer[role="contentinfo"] {
+  background: @footerColor;
+  height: 203px;
 }

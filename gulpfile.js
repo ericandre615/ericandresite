@@ -50,6 +50,7 @@ gulp.task('scripts', function() {
             'src/js/lib/plugins.js',
             'src/js/lib/timemap.js',
             'src/js/lib/kickback.js',
+            'src/js/form-action.js',
             'src/js/scrollables.js',
             'src/js/smooth-scroll.js',
             'src/js/main.js'
@@ -60,8 +61,8 @@ gulp.task('scripts', function() {
         .pipe(rename('main.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('public/_assets/js')) 
-        .pipe(connect.reload()); 
+        .pipe(gulp.dest('public/_assets/js'))
+        .pipe(connect.reload());
 });
 
 gulp.task('imagemin', function() {
@@ -74,14 +75,14 @@ gulp.task('imagemin', function() {
             progressive: true,
             optimizationLevel: 9
         }))
-        .pipe(gulp.dest(imgDest)); 
+        .pipe(gulp.dest(imgDest));
 });
 
 gulp.task('watch', function() {
     gulp.watch(['views/*.jade'], ['jade']);
     gulp.watch(['src/js/*.js'], ['scripts']);
     gulp.watch(['src/styles/**/*.less'], ['less']);
-    gulp.watch(['public/_assets/img/**/*']); 
+    gulp.watch(['public/_assets/img/**/*']);
 });
 
 gulp.task('default', ['webserver', 'less', 'scripts', 'watch']);

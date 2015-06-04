@@ -5,7 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var routes = {};
+routes.index = require('./routes/index');
+routes.contact = require('./routes/contact');
+routes.redirected = require('./routes/redirected');
 
 var app = express();
 
@@ -17,16 +20,18 @@ app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', routes.index);
+app.use('/contact', routes.contact);
+app.use('/redirected', routes.redirected);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    res.status(404);
-    res.render('404.jade', {title: '404 - Page Not Found'});
+    var err = new Error('not found');
+    err.status = 404;
     next(err);
 });
 
@@ -37,10 +42,17 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    if(err.status == 404) {
+      res.render('404', {
+        message: err.message,
+        error: err
+      });
+    } else {
+      res.render('error', {
+        message: err.message,
+        error: err
+      });
+    }
   });
 }
 

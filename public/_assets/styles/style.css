@@ -2,6 +2,10 @@ ul {
   list-style: none;
 }
 
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
 section {
   background-color: #ffffff;
   -webkit-transition: all 1.5s ease;
@@ -60,4 +64,8 @@ ul[role="menubar"] li {
 ul[role="menubar"] li a {
   text-decoration: none;
   color: white;
+}
+footer[role="contentinfo"] {
+  background: #4d4b61;
+  height: 203px;
 }
