@@ -1,0 +1,23 @@
+footer[role="contentinfo"] {
+    .clear;
+    .dejavu-mono;
+    background: @darkCode;
+    height: 203px;
+    color: white;
+
+    form {
+        input, textarea {
+            background: none;
+            border: none;
+            outline: none;
+            &:focus {
+                outline: none;
+                border: none;
+                border-bottom: 2px dashed white; 
+            }
+        }
+        button {
+            border:none;
+        }
+    }
+}

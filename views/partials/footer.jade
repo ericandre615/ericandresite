@@ -3,8 +3,11 @@
 footer(role="contentinfo")
 
   form#contact.container(method="POST", action="/contact")
+    label(for="name_full") [name]$
     input(type="text", name="name_full")
+    label(for="email") [email]$
     input(type="email", name="email")
+    label(for="msg") [message]$
     textarea(name="msg")
     button(type="submit" value="Send") Send
 

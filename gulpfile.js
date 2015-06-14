@@ -1,6 +1,5 @@
 // init gulp
 var gulp = require('gulp'),
-    connect = require('gulp-connect'),
     path = require('path');
 
 // init plugins
@@ -12,55 +11,61 @@ var concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     changed = require('gulp-changed'),
     imagemin = require('gulp-imagemin'),
-    autoprefix = require('gulp-autoprefixer');
+    autoprefix = require('gulp-autoprefixer'),
+    livereload = require('gulp-livereload');
 
-gulp.task('webserver', function() {
-    //start webserver with livereload
-    connect.server({
-        // a  folder to be root if different from where index.js is located
-        // root: 'app',
-        livereload: true
-    });
-});
-
-gulp.task('jade', function() {
-    return gulp.src('views/*.jade')
-        .pipe(connect.reload());
-});
+var jsFiles = [
+        'src/js/lib/polyfills.js',
+        'src/js/lib/plugins.js',
+        'src/js/lib/timemap.js',
+        'src/js/lib/kickback.js',
+        'src/js/form-action.js',
+        'src/js/scrollables.js',
+        'src/js/smooth-scroll.js',
+        'src/js/main.js'
+    ];
 
 gulp.task('less', function() {
-    //setup less
-    // gulp.src will determine the order in which less files are conactenated to css
     return gulp.src('src/styles/master.less')
+        .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(concat('style.css'))
         .pipe(autoprefix('last 3 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(sourcemaps.write())
+        .pipe(rename('styles.css'))
         .pipe(gulp.dest('public/_assets/styles'))
-        .pipe(connect.reload());
+        .pipe(livereload());
 });
 
 gulp.task('scripts', function() {
-    //setup concat + minification
-    // to run for all js files use 'app/src/scripts/*.js'
-    return gulp.src([
-            'src/js/lib/polyfills.js',
-            'src/js/lib/plugins.js',
-            'src/js/lib/timemap.js',
-            'src/js/lib/kickback.js',
-            'src/js/form-action.js',
-            'src/js/scrollables.js',
-            'src/js/smooth-scroll.js',
-            'src/js/main.js'
-        ])
-        .pipe(sourcemaps.init())
-        .pipe(concat('main.js'))
-        .pipe(gulp.dest('public/_assets/js'))
-        .pipe(rename('main.min.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('public/_assets/js'))
-        .pipe(connect.reload());
+    return gulp.src(jsFiles)
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('public/_assets/js'))
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('public/_assets/js'))
+    .pipe(livereload());
 });
+
+gulp.task('less-prod', function() {
+    return gulp.src('src/styles/master.less')
+        .pipe(less())
+        .pipe(autoprefix('last 3 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(rename('styles.css'))
+        .pipe(gulp.dest('public/_assets/styles'))
+});
+
+
+gulp.task('scripts-prod', function() {
+    return gulp.src(jsFiles)
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('public/_assets/js'))
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/_assets/js'));
+});
+
 
 gulp.task('imagemin', function() {
     var imgSrc = 'public/_assets/img/**/*',
@@ -72,16 +77,23 @@ gulp.task('imagemin', function() {
             progressive: true,
             optimizationLevel: 9
         }))
-        .pipe(gulp.dest(imgDest));
+        .pipe(gulp.dest(imgDest))
+        .pipe(livereload());
+});
+
+gulp.task('reload', function() {
+    return livereload.reload();
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['views/*.jade'], ['jade']);
-    gulp.watch(['src/js/*.js'], ['scripts']);
+    gulp.watch(['views/**/*.jade'], ['reload']);
+    gulp.watch(['src/js/**/*.js'], ['scripts']);
     gulp.watch(['src/styles/**/*.less'], ['less']);
-    gulp.watch(['public/_assets/img/**/*']);
+    gulp.watch(['public/_assets/img/**/*'], ['imagemin']);
 });
 
-gulp.task('default', ['webserver', 'less', 'scripts', 'watch']);
+gulp.task('default', ['less', 'scripts', 'watch']);
+
+gulp.task('build', ['less-prod', 'scripts-prod', 'imagemin']);
 
 module.exports = gulp; // if you would like to use gulp-devtools

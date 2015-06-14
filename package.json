@@ -1,6 +1,6 @@
 {
   "name": "ericandre",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -10,6 +10,7 @@
     "cookie-parser": "~1.3.4",
     "debug": "~2.1.1",
     "express": "~4.12.2",
+    "gulp-livereload": "^3.8.0",
     "jade": "~1.9.2",
     "morgan": "~1.5.1",
     "nodemailer": "^1.3.4",

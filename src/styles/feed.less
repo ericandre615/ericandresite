@@ -68,7 +68,7 @@
         height: 16px;
     }
 
-    .commits li, .message {
+    .commits li .message {
         display: inline-block;
         max-width: 390px;
         margin-top: 2px;
@@ -78,6 +78,11 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         vertical-align: top;
+    }
+
+    .commits li.more {
+        padding-top: 2px;
+        font-size: 11px;
     }
 
     code {
