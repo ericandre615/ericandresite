@@ -31,13 +31,10 @@ gulp.task('jade', function() {
 gulp.task('less', function() {
     //setup less
     // gulp.src will determine the order in which less files are conactenated to css
-    return gulp.src([
-        'src/styles/base.less',
-        'src/styles/main.less'
-        ])
+    return gulp.src('src/styles/master.less')
         .pipe(less())
         .pipe(concat('style.css'))
-        .pipe(autoprefix('last 3 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(autoprefix('last 3 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(gulp.dest('public/_assets/styles'))
         .pipe(connect.reload());
 });

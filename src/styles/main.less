@@ -1,9 +1,3 @@
-@dark: #101112;
-@footerColor : #4D4B61;
-@zindexLayer2: 10;
-@zindexLayerTop: 9999;
-@shadowLayer1: 0px 0px 5px 1px black;
-
 .container {
   max-width:1024px;
   margin:0 auto;
@@ -31,6 +25,7 @@ nav[role="navigation"] {
     width:100%;
     height:40px;
     padding:12px;
+    box-sizing: initial;
     background-color: @dark;
     z-index: @zindexLayerTop;
     box-shadow: @shadowLayer1;
@@ -73,6 +68,6 @@ ul[role="menubar"] {
 }
 
 footer[role="contentinfo"] {
-  background: @footerColor;
+  background: @darkCode;
   height: 203px;
 }

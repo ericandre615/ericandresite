@@ -2,9 +2,12 @@ window.onload = function() {
     var gitfeed;
     var feedContainer = document.getElementById('feed');
 
-    function feedBuilder(feed) {
-        for(var i = 0; i < 3; i++) {
+    function feedBuilder(feed, limit) {
+        var limit = limit || 3;
+        
+        for(var i = 0; i < limit; i++) {
             var elem = document.createElement('div');
+            elem.classList.add('alert');
             elem.innerHTML = feed[i].content[0]._;
             feedContainer.appendChild(elem);
         }
@@ -20,7 +23,7 @@ window.onload = function() {
         gitfeed = JSON.parse(response);
         var entries = gitfeed.feed.entry;
         
-        feedBuilder(entries);
+        feedBuilder(entries, 6);
         
         return;
     })['catch'](function(err) {
