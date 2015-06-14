@@ -36,7 +36,11 @@
         if(typeof elem === 'string') {
             elem = document.querySelector(elem);
         }
-        
+       
+        if(!elem) {
+            return false;
+        }
+
         var rect = elem.getBoundingClientRect();
         
         if(rect.top > window.innerHeight || rect.bottom < 0) {

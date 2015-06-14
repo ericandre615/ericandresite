@@ -977,7 +977,11 @@ if(typeof module !== 'undefined' && module.exports) {
         if(typeof elem === 'string') {
             elem = document.querySelector(elem);
         }
-        
+       
+        if(!elem) {
+            return false;
+        }
+
         var rect = elem.getBoundingClientRect();
         
         if(rect.top > window.innerHeight || rect.bottom < 0) {
@@ -1101,4 +1105,33 @@ if(typeof module !== 'undefined' && module.exports) {
 
 })();
 
+window.onload = function() {
+    var gitfeed;
+    var feedContainer = document.getElementById('feed');
 
+    function feedBuilder(feed) {
+        for(var i = 0; i < 3; i++) {
+            var elem = document.createElement('div');
+            elem.innerHTML = feed[i].content[0]._;
+            feedContainer.appendChild(elem);
+        }
+
+        return;
+    };
+
+    kickback.request({
+        url: '/feed',
+        method: 'GET'
+    })
+    .then(function(response) {
+        gitfeed = JSON.parse(response);
+        var entries = gitfeed.feed.entry;
+        var feedHTML = gitfeed.feed.entry[0].content[0]._;
+        console.log(gitfeed.feed.entry[0].content[0]._);
+        feedBuilder(entries);
+        return;
+    })['catch'](function(err) {
+        return err;
+    });
+    
+};
