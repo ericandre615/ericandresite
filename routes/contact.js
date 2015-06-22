@@ -15,12 +15,12 @@ router.post('/', function(req, res) {
       port:25,
       auth: {
         user: "newmail",
-        pass: "eandre615"
+        pass: "webmailtest615"
       }
     }));
 
   var mailOptions = {
-    from: 'Eric Andre <newmail@webfaction.com>',
+    from: 'Eric Andre <eric@ericandre615.webfactional.com>',
     to: 'ericandre615@gmail.com',
     subject: 'Message from Ericandre.info',
     text: 'contact from ericandre.info name:'+name_full+', email: '+email+', message: '+message,
@@ -34,17 +34,18 @@ router.post('/', function(req, res) {
     transport.sendMail(mailOptions, function(err, info) {
       if(err) {
         response = {
-          'success': false,
-          'error': new Error('Mail Error: ', err)
+          success: false,
+          error: new Error('Mail Error: ', err),
+          message: 'Email could not be sent'
         };
-        return response;
+        return done(err, response);
       } else {
         response = {
           'success': true,
           'message': 'email message was sent',
           'info':info
         };
-        return response;
+        return done(null, response);
       }
     });
 
@@ -53,12 +54,19 @@ router.post('/', function(req, res) {
       'success': false,
       'error': 'required input had empty value'
     };
-
-    return response;
+    return done(response.error, response);
   }
 
-  return response;
-  //res.redirect('/');
+    function done(err, data) {
+        if(err) {
+            res.send(err);
+            res.end();
+            return;
+        }
+        res.send(data);
+        res.end();
+        return;
+    }
 });
 
 module.exports = router;

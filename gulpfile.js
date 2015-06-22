@@ -86,6 +86,7 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function() {
+    livereload.listen();
     gulp.watch(['views/**/*.jade'], ['reload']);
     gulp.watch(['src/js/**/*.js'], ['scripts']);
     gulp.watch(['src/styles/**/*.less'], ['less']);

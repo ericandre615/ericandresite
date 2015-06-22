@@ -21,15 +21,21 @@
     } else {
       kickback.request({
         url: '/contact',
-        data: formData,
+        data: {
+            name_full: formData.name_full.value,
+            email: formData.email.value,
+            msg: formData.msg.value
+        },
         method: 'POST',
-        auto: true
+        serialize: true
       })
       .then(function(response) {
         if(response.success === true) {
-          console.log('SUCCESS');
-        } else {
+          console.log('SUCCESS', response);
+        } else if(response.code) {
           console.log('hmmm', response);
+        } else {
+            console.log('dang', response);
         }
         return response;
       })['catch'](function (err) {

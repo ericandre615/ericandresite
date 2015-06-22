@@ -3,12 +3,15 @@
 footer(role="contentinfo")
 
   form#contact.container(method="POST", action="/contact")
-    label(for="name_full") [name]$
-    input(type="text", name="name_full")
-    label(for="email") [email]$
-    input(type="email", name="email")
-    label(for="msg") [message]$
-    textarea(name="msg")
+    .form-group
+        label(for="name_full") [name]$
+        input(type="text", name="name_full")
+    .form-group
+        label(for="email") [email]$
+        input(type="email", name="email")
+    .form-group
+        label(for="msg") [message]$
+        textarea(name="msg")
     button(type="submit" value="Send") Send
 
   p site by Eric Andre. copyright &copy; 2015. Nashville, TN
