@@ -1,0 +1,90 @@
+/*** LESS Grid ***/
+@grid-gutter: 20px;
+@grid-columns: 12;
+@grid-size:;
+
+.loopingClass (@index, @grid-size) when (@index > 0) {
+  .col@{grid-size}-@{index} {
+    //resulting CSS
+    display: inline-block;
+    width: percentage((@index / @grid-columns));
+    min-height: 1px;
+  }
+
+  .loopingClass((@index - 1), @grid-size);
+}
+
+// end loop when index 0
+.loopingClass(0) {}
+
+// "call" loopingClass first time with highest value
+.loopingClass(@grid-columns, @grid-size);
+
+// styles inside grid
+.inside-grid {
+  margin-left: (@grid-gutter / 2);
+  margin-right: (@grid-gutter / 2);
+}
+
+.kill-margins {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.kill-margin-left {
+  margin-left: 0;
+}
+
+.kill-margin-right {
+  margin-right: 0;
+}
+
+/*** RESPONSIVE GRIDS ***/
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  .loopingClass(@grid-columns, @grid-size: -sm);
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+  .loopingClass(@grid-columns, @grid-size: -xs);
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+  .loopingClass(@grid-columns, @grid-size: -md);
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+  .loopingClass(@grid-columns, @grid-size: -md);
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+  .loopingClass(@grid-columns, @grid-size: -md);
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+  .loopingClass(@grid-columns, @grid-size: -lg);
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+  .loopingClass(@grid-columns, @grid-size: -i4);
+}

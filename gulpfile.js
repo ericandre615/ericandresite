@@ -94,7 +94,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['less', 'scripts', 'watch']);
-
+gulp.task('dev', ['less', 'scripts']);
 gulp.task('build', ['less-prod', 'scripts-prod', 'imagemin']);
 
 module.exports = gulp; // if you would like to use gulp-devtools
