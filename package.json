@@ -1,6 +1,6 @@
 {
   "name": "ericandre",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

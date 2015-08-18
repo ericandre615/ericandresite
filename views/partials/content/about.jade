@@ -1,0 +1,32 @@
+// - views/partials/content/about.jade
+
+section#about
+    div(style="background: #000000; overflow:auto;width:100%;padding:.2em .6em;")
+        pre(style="margin: 0; line-height: 125%").
+            <span style="color: #00cd00">var</span> <span style="color: #cccccc">developer</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">{</span>
+            <span style="color: #cccccc">  prototype</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">{</span>
+            <span style="color: #cccccc">    type</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&#39;web&#39;</span><span style="color: #cccccc">,</span>
+            <span style="color: #cccccc">    bio</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&#39;&#39;</span><span style="color: #cccccc">,</span>
+            <span style="color: #cccccc">    name</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&#39;&#39;</span><span style="color: #cccccc">,</span>
+            <span style="color: #cccccc">    skills</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">[],</span>
+            <span style="color: #cccccc">    work</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">[],</span>
+            <span style="color: #cccccc">    projects</span><span style="color: #3399cc">:</span>
+            <span style="color: #cccccc">    education</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">[]</span>
+            <span style="color: #cccccc">  },</span>
+            <span style="color: #cccccc">  create</span><span style="color: #3399cc">:</span> <span style="color: #00cd00">function</span> <span style="color: #cccccc">create(options)</span> <span style="color: #cccccc">{</span>
+            <span style="color: #cccccc">    options</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">options</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">{};</span>
+            <span style="color: #00cd00">    var</span> <span style="color: #cccccc">config</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">{</span>
+            <span style="color: #cccccc">       type</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.type</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.type,</span>
+            <span style="color: #cccccc">       bio</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.bio</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.bio,</span>
+            <span style="color: #cccccc">       name</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.name</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.name,</span>
+            <span style="color: #cccccc">       skills</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.skills</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.skills,</span>
+            <span style="color: #cccccc">       work</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.work</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.work,</span>
+            <span style="color: #cccccc">       projects</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.projects</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.projects,</span>
+            <span style="color: #cccccc">       education</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">options.eduction</span> <span style="color: #3399cc">||</span> <span style="color: #cccccc">developer.prototype.eduction,</span>
+            <span style="color: #cccccc">    }</span>
+
+            <span style="color: #cdcd00">  return</span> <span style="color: #cd00cd">Object</span><span style="color: #cccccc">.create(developer.prototype,</span> <span style="color: #cccccc">config);</span>
+            <span style="color: #cccccc">  }</span>
+            <span style="color: #cccccc">};</span>
+
+            <span style="color: #00cd00">var</span> <span style="color: #cccccc">me</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">developer</span><span style="color: #cccccc">.create(</span><span style="color: #cccccc">{</span><span style="color: #cccccc">name</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&#39;Eric Andre&#39;</span><span style="color: #cccccc">}</span><span style="color: #cccccc">);</span>

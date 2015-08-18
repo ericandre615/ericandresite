@@ -1,27 +1,30 @@
 footer[role="contentinfo"] {
-    .clear;
-    .dejavu-mono;
-    background: @darkCode;
-    padding: 20px;
-    color: white;
-    p {
-        text-align: right;
-        margin: 80px 0 0 0;
+  .clear;
+  .dejavu-mono;
+  background: @darkCode;
+  padding: 1.5em;
+  color: white;
+  p {
+    text-align: right;
+    margin: 80px 0 0 0;
+  }
+  form {
+    label {
+      vertical-align: top;
     }
-    form {
-        input, textarea {
-            background: none;
-            border: none;
-            outline: none;
-            &:focus {
-                outline: none;
-                border: none;
-                border-bottom: 2px dashed white; 
-            }
-        }
-        button {
-            border: none;
-            color: @dark;
-        }
+    input, textarea {
+      background: none;
+      border: none;
+      outline: none;
+      &:focus {
+        outline: none;
+        border: none;
+        border-bottom: 2px dashed white; 
+      }
     }
+    button {
+      border: none;
+      color: @dark;
+    }
+  }
 }

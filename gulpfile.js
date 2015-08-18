@@ -22,6 +22,7 @@ var jsFiles = [
         'src/js/form-action.js',
         'src/js/scrollables.js',
         'src/js/smooth-scroll.js',
+        'src/js/feed.js',
         'src/js/main.js'
     ];
 

@@ -1,9 +1,15 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
-  .col-12
-  .col-4.col-sm-12
-  .col-4.col-sm-12
-  .col-4.col-sm-12
+block content 
+  include ./partials/content/about.jade
+
+  include ./partials/content/work.jade
+
+  include ./partials/content/skills.jade
+
+  include ./partials/content/education.jade
+
+  .col-12(style="background: grey; height: 60px;")
+  .col-4.col-sm-12.col-md-6(style="background: red; height:60px")
+  .col-4.col-sm-12.col-md-6(style="background: blue; height: 60px")
+  .col-4.col-sm-12.col-md-12(style="background: green; height: 60px")

@@ -57,7 +57,12 @@ ul[role="menubar"] {
         display:inline;
         a {
             text-decoration:none;
-            color: white;
+            color: rgb(255, 255, 255);
+            transition: color 1.5s ease;
+            &.active-nav {
+              color: rgb(114, 249, 76);
+              transition: color 1.5s ease;
+            }
         }
     }
 }

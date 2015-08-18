@@ -950,7 +950,8 @@ if(typeof module !== 'undefined' && module.exports) {
 
     var scrollTimer = null,
         scrollCacheTimer = null,
-        cacheScrollPos = 0;
+        cacheScrollPos = 0,
+        scrollDirection;
 
     var navmenu = document.querySelector('ul[role="menubar"]'),
         menubar = document.getElementById('main-nav'),
@@ -959,7 +960,9 @@ if(typeof module !== 'undefined' && module.exports) {
     var sections = [
             '#about',
             '#work',
-            '#projects'
+            '#skills',
+            '#projects',
+            '#education'
         ];
 
     var initialBGColor = '#eaeaea',
@@ -981,11 +984,12 @@ if(typeof module !== 'undefined' && module.exports) {
 
     function isElementVisible(elem) {
         if(typeof elem === 'string') {
-            elem = document.querySelector(elem);
+          var elemAnchor = document.querySelector('a[href="'+elem+'"]');
+          elem = document.querySelector(elem); 
         }
        
         if(!elem) {
-            return false;
+          return false;
         }
 
         var rect = elem.getBoundingClientRect();
@@ -995,10 +999,17 @@ if(typeof module !== 'undefined' && module.exports) {
             if(elem.classList.contains('in-view')) {
                 elem.classList.remove('in-view');
             }
+            if(elemAnchor.classList.contains('active-nav')) {
+                elemAnchor.classList.remove('active-nav');
+            }
+
             return false;
         } else {
             console.log(elem, 'is in view');
+            console.log(elemAnchor, 'is active');
             elem.classList.add('in-view');
+            elemAnchor.classList.add('active-nav');
+
             return true;
         }
     }
@@ -1013,11 +1024,13 @@ if(typeof module !== 'undefined' && module.exports) {
         } 
 
         if(cacheScrollPos < window.scrollY) {
-            //scrolling down 
+            //scrolling down
+            scrollDirection = 'down';
             menubar.classList.add('hide-nav');
         }
         if(cacheScrollPos > window.scrollY) {
             //scrolling up
+            scrollDirection = 'up';
             menubar.classList.remove('hide-nav');
         }
 
@@ -1144,3 +1157,4 @@ window.onload = function() {
     });
     
 };
+

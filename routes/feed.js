@@ -8,15 +8,13 @@ var request = require('request'),
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    //var data = request(feed);
-    //res.send(data);
     request(feed, function(err, response, body) {
         if(err) {
             res.send(err);
         }
         if(res.statusCode != 200) {
             res.send(new Error('status not OK'));
-        }
+        } 
 
         var data;
 
