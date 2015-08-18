@@ -1,6 +1,9 @@
 extends layout
 
-block content 
+block content
+
+  h1 #[span(class='code-var') var] me #[span(class='code-eq') =] #[span(class='code-obj') Object]&period;create(developer&period;#[span(class='code-proto') prototype], {#[span(class='code-prop') name]&colon; #[span(class='code-str') &apos;Eric Andre&apos;]})
+
   include ./partials/content/about.jade
 
   include ./partials/content/work.jade
@@ -8,8 +11,3 @@ block content
   include ./partials/content/skills.jade
 
   include ./partials/content/education.jade
-
-  .col-12(style="background: grey; height: 60px;")
-  .col-4.col-sm-12.col-md-6(style="background: red; height:60px")
-  .col-4.col-sm-12.col-md-6(style="background: blue; height: 60px")
-  .col-4.col-sm-12.col-md-12(style="background: green; height: 60px")

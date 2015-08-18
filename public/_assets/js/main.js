@@ -980,21 +980,25 @@ if(typeof module !== 'undefined' && module.exports) {
 
     function handleScroll() {
         console.log('scrolling stopped');
+        console.log('dir', scrollDirection);
+        if(scrollDirection == 'down') {
+          menubar.classList.add('hide-nav');
+        }
     }
 
     function isElementVisible(elem) {
         if(typeof elem === 'string') {
           var elemAnchor = document.querySelector('a[href="'+elem+'"]');
-          elem = document.querySelector(elem); 
+          elem = document.querySelector(elem);
         }
-       
+
         if(!elem) {
           return false;
         }
 
         var rect = elem.getBoundingClientRect();
-        
-        if(rect.top > window.innerHeight || rect.bottom < 0) {
+
+        if(rect.top > (window.innerHeight - 150) || rect.bottom < 150) {
             console.log(elem, 'is NOT in view');
             if(elem.classList.contains('in-view')) {
                 elem.classList.remove('in-view');
@@ -1021,12 +1025,12 @@ if(typeof module !== 'undefined' && module.exports) {
 
         if(scrollCacheTimer != null) {
             clearTimeout(scrollCacheTimer);
-        } 
+        }
 
         if(cacheScrollPos < window.scrollY) {
             //scrolling down
             scrollDirection = 'down';
-            menubar.classList.add('hide-nav');
+            //menubar.classList.add('hide-nav');
         }
         if(cacheScrollPos > window.scrollY) {
             //scrolling up
@@ -1034,10 +1038,10 @@ if(typeof module !== 'undefined' && module.exports) {
             menubar.classList.remove('hide-nav');
         }
 
-        scrollTimer = setTimeout(handleScroll, 1500);
+        scrollTimer = setTimeout(handleScroll, 500);
         scrollCacheTimer = setTimeout(scrollSetCached, 100);
 
-        if(window.scrollY == 0) { masthead.style.backgroundColor = initialBGColor; } 
+        if(window.scrollY == 0) { masthead.style.backgroundColor = initialBGColor; }
         if(window.scrollY > 0 && window.scrollY <= 20) { masthead.style.backgroundColor = bGColor_1; }
         if(window.scrollY >= 21 && window.scrollY <= 40) { masthead.style.backgroundColor = bGColor_2; }
         if(window.scrollY >= 41 && window.scrollY <= 60) { masthead.style.backgroundColor = bGColor_3; }
