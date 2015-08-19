@@ -6,6 +6,8 @@
         cacheScrollPos = 0,
         scrollDirection;
 
+    var skillsList = document.querySelectorAll('.skill-bar');
+
     var navmenu = document.querySelector('ul[role="menubar"]'),
         menubar = document.getElementById('main-nav'),
         masthead = document.getElementById('masthead');
@@ -37,6 +39,20 @@
         if(scrollDirection == 'down') {
           menubar.classList.add('hide-nav');
         }
+    }
+
+    function listSkills(status) {
+      if(!status) {
+        console.log('SKILLS NOT view remove list');
+        Array.prototype.forEach.call(skillsList, function(item) {
+          item.classList.remove('active');
+        });
+      } else {
+        console.log('SKILLS in view add list');
+        Array.prototype.forEach.call(skillsList, function(item) {
+          item.classList.add('active');
+        });
+      }
     }
 
     function isElementVisible(elem) {
@@ -105,6 +121,13 @@
 
         sections.forEach(function(elem) {
             isElementVisible(elem);
+            if(elem == '#skills') {
+              if(isElementVisible(elem)) {
+                listSkills(true);
+              } else {
+                listSkills(false);
+              }
+            }
         });
     };
 

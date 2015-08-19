@@ -11,6 +11,13 @@ footer[role="contentinfo"] {
   form {
     label {
       vertical-align: top;
+      &.error{
+        color: red;
+      }
+      &.active {
+        color: rgb(114, 249, 76);
+        transition: color 1.5s ease;
+      }
     }
     input, textarea {
       background: none;
@@ -19,7 +26,7 @@ footer[role="contentinfo"] {
       &:focus {
         outline: none;
         border: none;
-        border-bottom: 2px dashed white; 
+        border-bottom: 2px dashed white;
       }
     }
     button {

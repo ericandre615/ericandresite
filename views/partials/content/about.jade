@@ -1,8 +1,14 @@
 // - views/partials/content/about.jade
 
 section#about
+    button#toggle-code.mega-octicon.octicon-terminal
     h2 #[span(class="me") me]&period;#[span(class="me-title") about]
-    div#code-about
+    div#bare-about
+      p.
+        Here's a bunch of random things about me. I'm a web developer living in Nashville, TN. I like music and arts and all that stuff. Synthesizers are really cool. I like to make things and tinker with things. If it's not broke, who cares. Let's take it a part and learn how it works.
+      p.
+        Another paragraph about me and stuff. Yadatadatada da dee da. More and more and more.
+    div#code-about(style="display:none;")
         pre(style="margin: 0;").
             <span class="code-var">var</span> <span>developer</span> <span class="code-eq">=</span> <span>{</span>
             <span class="code-proto">  prototype</span><span>:</span> <span>{</span>
@@ -11,7 +17,7 @@ section#about
             <span class="code-prop">    name</span><span>:</span> <span class="code-str">&#39;&#39;</span><span>,</span>
             <span class="code-prop">    skills</span><span>:</span> <span>[],</span>
             <span class="code-prop">    work</span><span>:</span> <span>[],</span>
-            <span class="code-prop">    projects</span><span>:</span>
+            <span class="code-prop">    projects</span><span>:</span> <span>[],</span>
             <span class="code-prop">    education</span><span>:</span> <span>[]</span>
             <span>  },</span>
             <span class="code-prop">  create</span><span>:</span> <span class="code-var">function</span> <span>create(<span class="code-params">options</span>)</span> <span>{</span>

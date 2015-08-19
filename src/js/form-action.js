@@ -1,12 +1,27 @@
 (function() {
   'use strict';
 
+  var contactForm = document.getElementById('contact');
+  [].forEach.call(contactForm, function(input) {
+    if(input.nodeName !== 'BUTTON') {
+      input.addEventListener('focus', function(e) {
+        var inputName = e.target.name;
+        var inputLabel = document.querySelector('label[for="'+inputName+'"]');
+        inputLabel.classList.add('active');
+      }, false);
+      input.addEventListener('blur', function(e) {
+        var inputName = e.target.name;
+        var inputLabel = document.querySelector('label[for="'+inputName+'"]');
+        inputLabel.classList.remove('active');
+      }, false);
+    }
+  });
+
   document.addEventListener('submit', function(e) {
     e.preventDefault();
-    var formData = document.querySelector('form#contact'),
-        formError = {};
+    var formError = {};
 
-    [].forEach.call(formData, function(formInput) {
+    [].forEach.call(contactForm, function(formInput) {
       if(formInput.value == '') {
         formError[formInput.name] = 'required';
       }
@@ -15,6 +30,8 @@
     if(Object.keys(formError).length) {
       for(var error in formError) {
         if(formError.hasOwnProperty(error)) {
+          var errorLabel = document.querySelector('label[for="'+error+'"]');
+          errorLabel.classList.add('error');
           console.log('Error '+error+' '+formError[error]);
         }
       }
@@ -22,9 +39,9 @@
       kickback.request({
         url: '/contact',
         data: {
-            name_full: formData.name_full.value,
-            email: formData.email.value,
-            msg: formData.msg.value
+            name_full: contactForm.name_full.value,
+            email: contactForm.email.value,
+            msg: contactForm.msg.value
         },
         method: 'POST',
         serialize: true

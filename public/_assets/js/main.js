@@ -900,12 +900,27 @@ if(typeof module !== 'undefined' && module.exports) {
 (function() {
   'use strict';
 
+  var contactForm = document.getElementById('contact');
+  [].forEach.call(contactForm, function(input) {
+    if(input.nodeName !== 'BUTTON') {
+      input.addEventListener('focus', function(e) {
+        var inputName = e.target.name;
+        var inputLabel = document.querySelector('label[for="'+inputName+'"]');
+        inputLabel.classList.add('active');
+      }, false);
+      input.addEventListener('blur', function(e) {
+        var inputName = e.target.name;
+        var inputLabel = document.querySelector('label[for="'+inputName+'"]');
+        inputLabel.classList.remove('active');
+      }, false);
+    }
+  });
+
   document.addEventListener('submit', function(e) {
     e.preventDefault();
-    var formData = document.querySelector('form#contact'),
-        formError = {};
+    var formError = {};
 
-    [].forEach.call(formData, function(formInput) {
+    [].forEach.call(contactForm, function(formInput) {
       if(formInput.value == '') {
         formError[formInput.name] = 'required';
       }
@@ -914,6 +929,8 @@ if(typeof module !== 'undefined' && module.exports) {
     if(Object.keys(formError).length) {
       for(var error in formError) {
         if(formError.hasOwnProperty(error)) {
+          var errorLabel = document.querySelector('label[for="'+error+'"]');
+          errorLabel.classList.add('error');
           console.log('Error '+error+' '+formError[error]);
         }
       }
@@ -921,9 +938,9 @@ if(typeof module !== 'undefined' && module.exports) {
       kickback.request({
         url: '/contact',
         data: {
-            name_full: formData.name_full.value,
-            email: formData.email.value,
-            msg: formData.msg.value
+            name_full: contactForm.name_full.value,
+            email: contactForm.email.value,
+            msg: contactForm.msg.value
         },
         method: 'POST',
         serialize: true
@@ -952,6 +969,8 @@ if(typeof module !== 'undefined' && module.exports) {
         scrollCacheTimer = null,
         cacheScrollPos = 0,
         scrollDirection;
+
+    var skillsList = document.querySelectorAll('.skill-bar');
 
     var navmenu = document.querySelector('ul[role="menubar"]'),
         menubar = document.getElementById('main-nav'),
@@ -984,6 +1003,20 @@ if(typeof module !== 'undefined' && module.exports) {
         if(scrollDirection == 'down') {
           menubar.classList.add('hide-nav');
         }
+    }
+
+    function listSkills(status) {
+      if(!status) {
+        console.log('SKILLS NOT view remove list');
+        Array.prototype.forEach.call(skillsList, function(item) {
+          item.classList.remove('active');
+        });
+      } else {
+        console.log('SKILLS in view add list');
+        Array.prototype.forEach.call(skillsList, function(item) {
+          item.classList.add('active');
+        });
+      }
     }
 
     function isElementVisible(elem) {
@@ -1052,6 +1085,13 @@ if(typeof module !== 'undefined' && module.exports) {
 
         sections.forEach(function(elem) {
             isElementVisible(elem);
+            if(elem == '#skills') {
+              if(isElementVisible(elem)) {
+                listSkills(true);
+              } else {
+                listSkills(false);
+              }
+            }
         });
     };
 
@@ -1114,7 +1154,7 @@ if(typeof module !== 'undefined' && module.exports) {
             var dataID = e.target.getAttribute('href');
             var dataTarget = document.querySelector(dataID);
             var dataSpeed = (e.target.getAttribute('data-scroll-speed')) ? e.target.getAttribute('data-scroll-speed') : 500;
-            var dataOffset = (e.target.getAttribute('data-scroll-offset')) ? e.target.getAttribute('data-scroll-offset') : false;
+            var dataOffset = (e.target.getAttribute('data-scroll-offset')) ? e.target.getAttribute('data-scroll-offset') : 0;
 
             // If the anchor exists
             if (dataTarget) {
@@ -1162,3 +1202,34 @@ window.onload = function() {
     
 };
 
+(function(window) {
+  var toggleCodeBtn = document.getElementById('toggle-code'),
+      aboutCode = document.getElementById('code-about'),
+      aboutBare = document.getElementById('bare-about'),
+      aboutSection = document.getElementById('about');
+
+  toggleCodeBtn.addEventListener('click', function(e) {
+    var aboutRect = aboutSection.getBoundingClientRect(),
+        bareRect = aboutBare.getBoundingClientRect();
+    if(e.target.classList.contains('active')) {
+      e.target.classList.remove('active');
+      aboutCode.classList.remove('active');
+      var delayDisplay = window.setTimeout(function() {
+        aboutCode.style.display = 'none';
+        aboutBare.style.display = 'inline-block';
+        window.clearTimeout(delayDisplay);
+      }, 1100);
+    } else {
+      aboutCode.style.top = '0px';
+      aboutCode.style.right = '-'+aboutRect.width+'px';
+      aboutCode.style.display = 'inline-block';
+      aboutBare.style.left = '-'+aboutRect.width+'px';
+      var delayDisplay = window.setTimeout(function() {
+        aboutBare.style.display = 'none';
+        aboutCode.classList.add('active');
+        window.clearTimeout(delayDisplay);
+      }, 500);
+      e.target.classList.add('active');
+    }
+  }, false);
+})(window);

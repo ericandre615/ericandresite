@@ -55,7 +55,7 @@
             var dataID = e.target.getAttribute('href');
             var dataTarget = document.querySelector(dataID);
             var dataSpeed = (e.target.getAttribute('data-scroll-speed')) ? e.target.getAttribute('data-scroll-speed') : 500;
-            var dataOffset = (e.target.getAttribute('data-scroll-offset')) ? e.target.getAttribute('data-scroll-offset') : false;
+            var dataOffset = (e.target.getAttribute('data-scroll-offset')) ? e.target.getAttribute('data-scroll-offset') : 0;
 
             // If the anchor exists
             if (dataTarget) {
