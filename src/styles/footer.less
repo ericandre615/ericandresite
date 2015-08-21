@@ -15,13 +15,18 @@ footer[role="contentinfo"] {
         color: red;
       }
       &.active {
-        color: rgb(114, 249, 76);
+        color: @caution;
+        transition: color 1.5s ease;
+      }
+      &.valid {
+        color: @active;
         transition: color 1.5s ease;
       }
     }
     input, textarea {
       background: none;
       border: none;
+      color: @codeStr;
       outline: none;
       &:focus {
         outline: none;

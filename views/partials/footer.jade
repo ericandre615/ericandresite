@@ -5,13 +5,13 @@ footer(role="contentinfo")
   form#contact.container(method="POST", action="/contact")
     .form-group
         label(for="name_full") [name]$
-        input(type="text", name="name_full")
+        input(type="text", name="name_full", id="name_full")
     .form-group
         label(for="email") [email]$
-        input(type="email", name="email")
+        input(type="email", name="email", id="email")
     .form-group
         label(for="msg") [message]$
-        textarea(name="msg")
+        textarea(name="msg", id="msg")
     button(type="submit" value="Send") Send
 
   p site by Eric Andre. copyright &copy; 2015. Nashville, TN

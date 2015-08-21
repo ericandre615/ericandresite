@@ -911,6 +911,13 @@ if(typeof module !== 'undefined' && module.exports) {
       input.addEventListener('blur', function(e) {
         var inputName = e.target.name;
         var inputLabel = document.querySelector('label[for="'+inputName+'"]');
+        if(e.target.value.length) {
+          inputLabel.classList.add('valid');
+        }
+        if(!e.target.value.length) {
+          inputLabel.classList.remove('valid');
+          inputLabel.classList.add('error');
+        }
         inputLabel.classList.remove('active');
       }, false);
     }
@@ -921,8 +928,14 @@ if(typeof module !== 'undefined' && module.exports) {
     var formError = {};
 
     [].forEach.call(contactForm, function(formInput) {
-      if(formInput.value == '') {
-        formError[formInput.name] = 'required';
+      if(formInput.nodeName !== 'BUTTON') {
+        if(formInput.value == '') {
+          formError[formInput.name] = 'required';
+        } else {
+          var inputLabel = document.querySelector('label[for="'+formInput.name+'"]');
+          inputLabel.classList.remove('error');
+          inputLabel.classList.add('valid');
+        }
       }
     });
 
