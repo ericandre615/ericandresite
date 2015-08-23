@@ -37,6 +37,7 @@
         console.log('scrolling stopped');
         console.log('dir', scrollDirection);
         if(scrollDirection == 'down') {
+          navmenu.classList.remove('active');
           menubar.classList.add('hide-nav');
         }
     }

@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener('load', function() {
     var gitfeed;
     var feedContainer = document.getElementById('feed');
 
@@ -30,4 +30,4 @@ window.onload = function() {
         return err;
     });
     
-};
+}, false);

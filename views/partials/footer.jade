@@ -4,14 +4,24 @@ footer(role="contentinfo")
 
   form#contact.container(method="POST", action="/contact")
     .form-group
-        label(for="name_full") [name]$
-        input(type="text", name="name_full", id="name_full")
+      label(for="name_full") [name]$
+      input(type="text", name="name_full", id="name_full")
     .form-group
-        label(for="email") [email]$
-        input(type="email", name="email", id="email")
+      label(for="email") [email]$
+      input(type="email", name="email", id="email")
     .form-group
-        label(for="msg") [message]$
-        textarea(name="msg", id="msg")
+      label(for="msg") [message]$
+      textarea(name="msg", id="msg")
     button(type="submit" value="Send") Send
+
+  ul#social-nav
+    li.social 
+      a(href="http://plus.google.com/+ericandre615") #[span(class="icon icon-gplus", title="google plus") ]
+    li.social
+      a(href="http://twitter.com/watkinseandre") #[span(class="icon icon-twitter", title="twitter") ]
+    li.social
+      a(href="https://www.linkedin.com/pub/eric-andre/57/198/764") #[span(class="icon icon-linkedin", title="linkedin") ]
+    li.social
+      a(href="http://github.com/ericandre615") #[span(class="mega-octicon octicon-mark-github", title="github") ]
 
   p site by Eric Andre. copyright &copy; 2015. Nashville, TN

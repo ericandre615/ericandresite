@@ -23,13 +23,13 @@ section#about
             <span class="code-prop">  create</span><span>:</span> <span class="code-var">function</span> <span>create(<span class="code-params">options</span>)</span> <span>{</span>
             <span>    options</span> <span class="code-eq">=</span> <span>options</span> <span class="code-op">||</span> <span>{};</span>
             <span class="code-var">    var</span> <span>config</span> <span class="code-eq">=</span> <span>{</span>
-            <span class="code-prop">       type</span><span>:</span> <span>options.type</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.type,
-            <span class="code-prop">       about</span><span>:</span> <span>options.about</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.about,
-            <span class="code-prop">       name</span><span>:</span> <span>options.name</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.name,
-            <span class="code-prop">       skills</span><span>:</span> <span>options.skills</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.skills,
-            <span class="code-prop">       work</span><span>:</span> <span>options.work</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.work,
-            <span class="code-prop">       projects</span><span>:</span> <span>options.projects</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.projects,
-            <span class="code-prop">       education</span><span>:</span> <span>options.eduction</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.eduction,
+            <span class="code-prop">       type</span><span>:</span> {<span class="code-prop">value:</span> <span>options.type</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.type},
+            <span class="code-prop">       about</span><span>:</span> {<span class="code-prop">value:</span> <span>options.about</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.about},
+            <span class="code-prop">       name</span><span>:</span> {<span class="code-prop">value:</span> <span>options.name</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.name},
+            <span class="code-prop">       skills</span><span>:</span> {<span class="code-prop">value:</span> <span>options.skills</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.skills},
+            <span class="code-prop">       work</span><span>:</span> {<span class="code-prop">value:</span> <span>options.work</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.work},
+            <span class="code-prop">       projects</span><span>:</span> {<span class="code-prop">value:</span> <span>options.projects</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.projects},
+            <span class="code-prop">       education</span><span>:</span> {<span class="code-prop">value:</span> <span>options.eduction</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.eduction},
             <span>    }</span>
 
             <span class="code-var">  return</span> <span class="code-obj">Object</span>.create(developer.<span class="code-proto">prototype</span>, <span>config);</span>

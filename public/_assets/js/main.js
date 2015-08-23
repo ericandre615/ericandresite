@@ -1014,6 +1014,7 @@ if(typeof module !== 'undefined' && module.exports) {
         console.log('scrolling stopped');
         console.log('dir', scrollDirection);
         if(scrollDirection == 'down') {
+          navmenu.classList.remove('active');
           menubar.classList.add('hide-nav');
         }
     }
@@ -1181,7 +1182,7 @@ if(typeof module !== 'undefined' && module.exports) {
 
 })();
 
-window.onload = function() {
+window.addEventListener('load', function() {
     var gitfeed;
     var feedContainer = document.getElementById('feed');
 
@@ -1213,13 +1214,23 @@ window.onload = function() {
         return err;
     });
     
-};
+}, false);
 
 (function(window) {
   var toggleCodeBtn = document.getElementById('toggle-code'),
       aboutCode = document.getElementById('code-about'),
       aboutBare = document.getElementById('bare-about'),
       aboutSection = document.getElementById('about');
+
+  var menuBtn = document.getElementById('menu-btn'),
+      menuNav = document.getElementById('main-nav'),
+      mainMenu = document.querySelector('ul[role="menubar"]'),
+      mastHead = document.getElementById('masthead');
+
+  menuBtn.addEventListener('click', function(e) {
+    menuBtn.classList.toggle('active');
+    mainMenu.classList.toggle('active');
+  }, false);
 
   toggleCodeBtn.addEventListener('click', function(e) {
     var aboutRect = aboutSection.getBoundingClientRect(),
@@ -1245,4 +1256,24 @@ window.onload = function() {
       e.target.classList.add('active');
     }
   }, false);
+
+  function positionNav() { 
+    if(window.innerWidth < 740) {
+      if(!mainMenu.classList.contains('side-menu')) {
+        mainMenu.classList.add('side-menu');
+        menuNav.removeChild(mainMenu);
+        mastHead.appendChild(mainMenu);
+      }
+    } else {
+      if(mainMenu.classList.contains('side-menu')) {
+        mastHead.removeChild(mainMenu);
+        menuNav.insertBefore(mainMenu, menuBtn);
+        mainMenu.classList.remove('side-menu');
+      }
+    }
+  }
+
+  window.addEventListener('load', positionNav, false);
+  window.onresize = positionNav;
+
 })(window);

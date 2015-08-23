@@ -10,7 +10,27 @@ and(max-width : 768px) {
 @media only screen
 and(max-width : 740px) {
   ul[role="menubar"] {
-    display: none;
+    display: block;
+    width: 240px;
+    position: fixed;
+    right: -260px;
+    height: 100%;
+    transition: all .5s ease;
+    background: @dark;
+    padding: 60px 0 0 2em;
+    text-align: left;
+    box-shadow: 0 0 12px 0px rgba(0, 0, 0, 0.73);
+    z-index: 10;
+    margin: 0;
+    &.active {
+      display: block;
+      right: 0;
+      transition: all .5s ease;
+    }
+    li {
+      display: block;
+      padding: 1em 0;
+    }
   }
   #menu-btn {
     display: inline-block;

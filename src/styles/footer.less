@@ -6,7 +6,7 @@ footer[role="contentinfo"] {
   color: white;
   p {
     text-align: right;
-    margin: 80px 0 0 0;
+    margin: 1em 0 0 0;
   }
   form {
     label {
@@ -37,6 +37,26 @@ footer[role="contentinfo"] {
     button {
       border: none;
       color: @dark;
+    }
+  }
+  #social-nav {
+    text-align: right;
+    margin-top: 80px;
+  }
+  .social {
+    display: inline-block;
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 32px;
+      vertical-align: top;
+      margin: 0 .5em;
+      &:hover, &:active {
+        color: @active!important;
+        .icon:before {
+          color: @active;
+        }
+      }
     }
   }
 }
