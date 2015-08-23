@@ -2,6 +2,8 @@
   'use strict';
 
   var contactForm = document.getElementById('contact');
+  var submitBtn = document.querySelector('button[type="submit"]');
+
   [].forEach.call(contactForm, function(input) {
     if(input.nodeName !== 'BUTTON') {
       input.addEventListener('focus', function(e) {
@@ -49,6 +51,8 @@
         }
       }
     } else {
+      document.body.style.cursor = 'wait';
+      submitBtn.setAttribute('disabled', true);
       kickback.request({
         url: '/contact',
         data: {
@@ -62,10 +66,16 @@
       .then(function(response) {
         if(response.success === true) {
           console.log('SUCCESS', response);
-        } else if(response.code) {
+          document.body.style.cursor = 'initial';
+          submitBtn.removeAttribute('disabled');
+        } else if(response.code.length) {
           console.log('hmmm', response);
+          document.body.style.cursor = 'initial';
+          submitBtn.removeAttribute('disabled');
         } else {
-            console.log('dang', response);
+          console.log('dang', response);
+          document.body.style.cursor = 'initial';
+          submitBtn.removeAttribute('disabled');
         }
         return response;
       })['catch'](function (err) {

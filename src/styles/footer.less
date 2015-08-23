@@ -28,16 +28,34 @@ footer[role="contentinfo"] {
       border: none;
       color: @codeStr;
       outline: none;
+      margin-left: 1em;
       &:focus {
         outline: none;
         border: none;
         border-bottom: 2px dashed white;
       }
+      &:hover {
+        border-bottom: 2px dashed white;
+      }
+    }
+    textarea {
+      resize: none;
+      height: 120px;
+      margin-bottom: 2em;
     }
     button {
       border: none;
       color: @dark;
+      padding: .5em 2em;
+      &:disabled {
+        background: grey;
+      }
     }
+  }
+  .form-group {
+    margin-top: 1em;
+    max-width: 340px;
+    display: block;
   }
   #social-nav {
     text-align: right;

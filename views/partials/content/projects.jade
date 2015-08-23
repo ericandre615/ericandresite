@@ -1,13 +1,21 @@
 // - views/partials/content/projects.jade
 
-mixin navItem(href, item)
-    li(role="menuitem")
-        a(href=href) #{item}
-
 section#projects
   h2 #[span(class="me") me]&period;#[span(class="me-title") projects] 
-  nav#nav-projects
-    ul(role="menubar")
-      +navItem('#phase3','Phase 3')
-      +navItem('#idesign', 'iDesign')
-      +navItem('#school', 'School')
+  p.code-str.
+    various projects
+
+  div#projects-list.col-md-12.col-4
+    h4.code-proto iDesign / Phase 3
+    ul
+      li #[a(href="http://myhounder.com") Hounder ] PHP / JS
+      li #[a(href="http://new.craigwheeler.com/") Craig &amp; Wheeler ] PHP / JS / Rets
+      li #[a(href="http://thegardnerschool.com") Gardner School ] PHP / CRM
+      li #[a(href="http://itunes.apple.com/us/app/jellytelly-best-in-kids-christian/id705286113?mt=8") Jelly Telly ] JS / Phonegap
+
+    h4.code-proto School Projects
+    ul
+      li #[a(href="http://ericandre615.webfactional.com/html5css3/imaginedragonsform/") Imagine Dragons] AngularJS
+      li #[a(href="http://ericandre615.webfactional.com/html5css3/parallax/") Parallaxin] HTML5/JS Video Game
+
+  include ./feed.jade
