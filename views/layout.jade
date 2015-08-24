@@ -8,6 +8,11 @@ html(class='no-js', lang="en")
 
     meta(name='description', content='#{description}')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(property='og:title', content='Eric Andre Portfolio #{title}')
+    meta(property='og:description', content='#{description}')
+    meta(property='og:url', content='http://ericandre.info')
+    meta(property='og:site_name', content='Eric Andre')
+    meta(property='og:author', content='http://plus.google.com/+ericandre615')
 
     link(rel='stylesheet', href='_assets/styles/normalize.css')
     link(rel='stylesheet', href='_assets/styles/styles.css')
@@ -20,7 +25,7 @@ html(class='no-js', lang="en")
     main.container(role="main")
 
       block content
- 
+
     include ./partials/footer.jade
 
     script(src='_assets/js/main.min.js')
