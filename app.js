@@ -13,6 +13,11 @@ routes.feed = require('./routes/feed');
 
 var app = express();
 
+app.use(function(req, res, next) {
+  res.removeHeader('X-Powered-By');
+  next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
