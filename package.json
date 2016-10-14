@@ -3,7 +3,10 @@
   "version": "1.0.2",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "prod": "gulp build",
+    "dev": "gulp dev",
+    "watch": "gulp default"
   },
   "dependencies": {
     "body-parser": "~1.12.0",
