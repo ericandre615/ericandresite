@@ -10,6 +10,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN mkdir -p /var/www/ericandreinfo
 
 ENV APP_DIR /var/www/ericandreinfo
+ENV PORT 80
 ENV NPM_VERSION 3.10.9
 ENV NODE_VERSION 6.9.1
 
@@ -58,8 +59,7 @@ RUN yarn prod
 #ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Expose Port
-EXPOSE 3000
+EXPOSE 80
 
 # Run App
-#CMD ["npm", "start"]
 CMD ["pm2", "start", "processes.json", "--no-daemon"]
