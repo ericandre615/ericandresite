@@ -1495,8 +1495,7 @@ h1 {
   position: fixed;
   top: 50%;
   Left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: 9999;
   width: 80%;
   height: 80%;
@@ -1510,8 +1509,7 @@ h1 {
   position: fixed;
   top: 50%;
   Left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: 9999;
   width: 80%;
   height: 80%;
@@ -1539,8 +1537,7 @@ section {
   padding: 1.5em;
   background: #0B0C0E;
   color: white;
-  -webkit-transition: background-color 1.5s ease;
-          transition: background-color 1.5s ease;
+  transition: background-color 1.5s ease;
 }
 section h2 {
   font-family: 'dejavu-mono', 'Andale Mono', 'Courier New', 'Courier', monospace;
@@ -1552,8 +1549,7 @@ section pre {
   font-family: 'dejavu-mono', 'Andale Mono', 'Courier New', 'Courier', monospace;
 }
 section.in-view {
-  -webkit-transition: background-color 1.5s ease;
-          transition: background-color 1.5s ease;
+  transition: background-color 1.5s ease;
   background-color: #14141b;
 }
 .form-group {
@@ -1581,13 +1577,11 @@ nav[role="navigation"] {
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transition: all 1s ease;
-          transition: all 1s ease;
+  transition: all 1s ease;
 }
 nav[role="navigation"].hide-nav {
   top: -64px;
-  -webkit-transition: all 1s ease;
-          transition: all 1s ease;
+  transition: all 1s ease;
 }
 #avatar {
   width: 40px;
@@ -1622,13 +1616,11 @@ ul[role="menubar"] li {
 ul[role="menubar"] li a {
   text-decoration: none;
   color: #ffffff;
-  -webkit-transition: color 1.5s ease;
-          transition: color 1.5s ease;
+  transition: color 1.5s ease;
 }
 ul[role="menubar"] li a.active-nav {
   color: #72f94c;
-  -webkit-transition: color 1.5s ease;
-          transition: color 1.5s ease;
+  transition: color 1.5s ease;
 }
 #about {
   position: relative;
@@ -1654,21 +1646,18 @@ ul[role="menubar"] li a.active-nav {
 }
 #about #bare-about {
   display: inline-block;
-  -webkit-transition: all 1s ease;
-          transition: all 1s ease;
+  transition: all 1s ease;
 }
 #about #code-about {
   z-index: 11;
   display: none;
   position: relative;
-  -webkit-transition: all 1s ease .2s;
-          transition: all 1s ease .2s;
+  transition: all 1s ease .2s;
 }
 #about #code-about.active {
   display: inline-block !important;
   background: #14141b;
-  -webkit-transition: all 1s ease .2s;
-          transition: all 1s ease .2s;
+  transition: all 1s ease .2s;
   top: 0!important;
   right: 0!important;
 }
@@ -1758,13 +1747,11 @@ footer[role="contentinfo"] form label.error {
 }
 footer[role="contentinfo"] form label.active {
   color: #ffba3c;
-  -webkit-transition: color 1.5s ease;
-          transition: color 1.5s ease;
+  transition: color 1.5s ease;
 }
 footer[role="contentinfo"] form label.valid {
   color: #72f94c;
-  -webkit-transition: color 1.5s ease;
-          transition: color 1.5s ease;
+  transition: color 1.5s ease;
 }
 footer[role="contentinfo"] form input,
 footer[role="contentinfo"] form textarea {
@@ -1934,8 +1921,7 @@ footer[role="contentinfo"] .social a:active .icon:before {
     position: fixed;
     right: -260px;
     height: 100%;
-    -webkit-transition: all .5s ease;
-            transition: all .5s ease;
+    transition: all .5s ease;
     background: #101112;
     padding: 60px 0 0 2em;
     text-align: left;
@@ -1946,8 +1932,7 @@ footer[role="contentinfo"] .social a:active .icon:before {
   ul[role="menubar"].active {
     display: block;
     right: 0;
-    -webkit-transition: all .5s ease;
-            transition: all .5s ease;
+    transition: all .5s ease;
   }
   ul[role="menubar"] li {
     display: block;

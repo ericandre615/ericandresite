@@ -17,7 +17,7 @@
             '#work',
             '#skills',
             '#projects',
-            '#education'
+            '#education',
         ];
 
     var initialBGColor = '#eaeaea',
@@ -30,12 +30,9 @@
 
     function scrollSetCached() {
         cacheScrollPos = window.scrollY;
-        console.log('set cache Y', cacheScrollPos);
     }
 
     function handleScroll() {
-        console.log('scrolling stopped');
-        console.log('dir', scrollDirection);
         if(scrollDirection == 'down') {
           navmenu.classList.remove('active');
           menubar.classList.add('hide-nav');
@@ -44,12 +41,10 @@
 
     function listSkills(status) {
       if(!status) {
-        console.log('SKILLS NOT view remove list');
         Array.prototype.forEach.call(skillsList, function(item) {
           item.classList.remove('active');
         });
       } else {
-        console.log('SKILLS in view add list');
         Array.prototype.forEach.call(skillsList, function(item) {
           item.classList.add('active');
         });
@@ -69,7 +64,6 @@
         var rect = elem.getBoundingClientRect();
 
         if(rect.top > (window.innerHeight - 150) || rect.bottom < 150) {
-            console.log(elem, 'is NOT in view');
             if(elem.classList.contains('in-view')) {
                 elem.classList.remove('in-view');
             }
@@ -79,8 +73,6 @@
 
             return false;
         } else {
-            console.log(elem, 'is in view');
-            console.log(elemAnchor, 'is active');
             elem.classList.add('in-view');
             elemAnchor.classList.add('active-nav');
 

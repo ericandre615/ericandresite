@@ -19,7 +19,6 @@ var jsFiles = [
         'src/js/lib/plugins.js',
         'src/js/lib/timemap.js',
         'src/js/lib/kickback.js',
-        'src/js/form-action.js',
         'src/js/scrollables.js',
         'src/js/smooth-scroll.js',
         'src/js/feed.js',
