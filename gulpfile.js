@@ -93,8 +93,8 @@ gulp.task('watch', function() {
     gulp.watch(['public/_assets/img/**/*'], ['imagemin']);
 });
 
-gulp.task('default', ['less', 'scripts', 'watch']);
-gulp.task('dev', ['less', 'scripts']);
-gulp.task('build', ['less-prod', 'scripts-prod', 'imagemin']);
+gulp.task('default', gulp.series('less', 'scripts', 'watch'));
+gulp.task('dev', gulp.series('less', 'scripts'));
+gulp.task('build', gulp.series('less-prod', 'scripts-prod', 'imagemin'));
 
 module.exports = gulp; // if you would like to use gulp-devtools

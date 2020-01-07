@@ -792,7 +792,7 @@ var kickback = (function(kickback) {
     kickback.request = function(kbOptions) {
         // options configuration and defaults
         if(typeof kbOptions === 'string') {
-            // assume it's a url and we are using GET 
+            // assume it's a url and we are using GET
             var tmp = kbOptions;
             kbOptions = {};
             kbOptions.url = tmp;
@@ -806,14 +806,14 @@ var kickback = (function(kickback) {
         kbOptions.cors = (kbOptions.cors) ? kbOptions.cors : false;
         kbOptions.async = (kbOptions.async) ? kbOptions.async : true;
         kbOptions.serialize = (kbOptions.serialize) ? kbOptions.serialize : false;
-        kbOptions.auto = (kbOptions.auto) ? kbOptions.auto : false; 
+        kbOptions.auto = (kbOptions.auto) ? kbOptions.auto : false;
         Object.defineProperty(kbOptions, 'tmp', {
             configurable: true,
             writable: true
         });
 
         if(kbOptions.auto === true) {
-            if(typeof window.FormData !== 'undefined') { 
+            if(typeof window.FormData !== 'undefined') {
                 if(kbOptions.data instanceof HTMLElement) {
                     kbOptions.data = new FormData(kbOptions.data);
                 } else if (typeof kbOptions.data === 'object' && kbOptions.data instanceof Array === false) {
@@ -835,7 +835,7 @@ var kickback = (function(kickback) {
                     kbOptions.data = kbOptions.tmp;
                     delete kbOptions.tmp;
                 }
-                
+
                 kbOptions.serialize = true;
             }
         }
@@ -843,12 +843,6 @@ var kickback = (function(kickback) {
         if(kbOptions.serialize === true) {
             kbOptions.data = _serialize(kbOptions.data);
         }
-
-        if(kbOptions.data instanceof FormData) {
-            console.log('formDATA');
-        } else {
-            console.log('notFormData');
-        } 
 
         return new Promise(function(resolve, reject) {
             var xhr = new XMLHttpRequest();
@@ -874,7 +868,7 @@ var kickback = (function(kickback) {
                 kbOptions.headers.value = kbOptions.headers.value || 'text/plain;charset=UTF-8';
                 xhr.setRequestHeader(kbOptions.headers.type, kbOptions.headers.value);
             }
-            
+
             if(kbOptions.headers === false && kbOptions.method.toLowerCase() === 'post' && kbOptions.serialize === true) {
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             }
@@ -1134,47 +1128,20 @@ window.addEventListener('load', function() {
 }, false);
 
 (function(window) {
-  var toggleCodeBtn = document.getElementById('toggle-code'),
-      aboutCode = document.getElementById('code-about'),
-      aboutBare = document.getElementById('bare-about'),
-      aboutSection = document.getElementById('about');
-
   var menuBtn = document.getElementById('menu-btn'),
       menuNav = document.getElementById('main-nav'),
       mainMenu = document.querySelector('ul[role="menubar"]'),
       mastHead = document.getElementById('masthead');
+
+  var copyDate = document.getElementById('copy-date');
+  copyDate.innerText = new Date().getFullYear();
 
   menuBtn.addEventListener('click', function(e) {
     menuBtn.classList.toggle('active');
     mainMenu.classList.toggle('active');
   }, false);
 
-  toggleCodeBtn.addEventListener('click', function(e) {
-    var aboutRect = aboutSection.getBoundingClientRect(),
-        bareRect = aboutBare.getBoundingClientRect();
-    if(e.target.classList.contains('active')) {
-      e.target.classList.remove('active');
-      aboutCode.classList.remove('active');
-      var delayDisplay = window.setTimeout(function() {
-        aboutCode.style.display = 'none';
-        aboutBare.style.display = 'inline-block';
-        window.clearTimeout(delayDisplay);
-      }, 1100);
-    } else {
-      aboutCode.style.top = '0px';
-      aboutCode.style.right = '-'+aboutRect.width+'px';
-      aboutCode.style.display = 'inline-block';
-      aboutBare.style.left = '-'+aboutRect.width+'px';
-      var delayDisplay = window.setTimeout(function() {
-        aboutBare.style.display = 'none';
-        aboutCode.classList.add('active');
-        window.clearTimeout(delayDisplay);
-      }, 500);
-      e.target.classList.add('active');
-    }
-  }, false);
-
-  function positionNav() { 
+  function positionNav() {
     if(window.innerWidth < 740) {
       if(!mainMenu.classList.contains('side-menu')) {
         mainMenu.classList.add('side-menu');

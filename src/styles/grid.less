@@ -1,7 +1,7 @@
 /*** LESS Grid ***/
 @grid-gutter: 20px;
 @grid-columns: 12;
-@grid-size:;
+@grid-size: ~"";
 
 .createGrid (@index, @grid-size) when (@index > 0) {
   .col@{grid-size}-@{index} {
@@ -57,25 +57,25 @@ and (max-width : 480px) {
 }
 
 @media only screen
-and (min-width: 960px) 
+and (min-width: 960px)
 and (max-width: 1024px) {
   .createGrid(@grid-columns, @grid-size);
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen  
+@media only screen
 and (max-device-width : 480px) {
   .createGrid(@grid-columns, @grid-size: -sm);
 }
 
 /* Smartphones (portrait) ----------- */
-@media only screen 
+@media only screen
 and (max-width : 320px) {
   .createGrid(@grid-columns, @grid-size: -xs);
 }
 
 /* Large screens ----------- */
-@media only screen 
+@media only screen
 and (min-width : 1824px) {
   .createGrid(@grid-columns, @grid-size: -xl);
 }

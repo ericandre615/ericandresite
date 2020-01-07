@@ -18,7 +18,7 @@ var kickback = (function(kickback) {
     kickback.request = function(kbOptions) {
         // options configuration and defaults
         if(typeof kbOptions === 'string') {
-            // assume it's a url and we are using GET 
+            // assume it's a url and we are using GET
             var tmp = kbOptions;
             kbOptions = {};
             kbOptions.url = tmp;
@@ -32,14 +32,14 @@ var kickback = (function(kickback) {
         kbOptions.cors = (kbOptions.cors) ? kbOptions.cors : false;
         kbOptions.async = (kbOptions.async) ? kbOptions.async : true;
         kbOptions.serialize = (kbOptions.serialize) ? kbOptions.serialize : false;
-        kbOptions.auto = (kbOptions.auto) ? kbOptions.auto : false; 
+        kbOptions.auto = (kbOptions.auto) ? kbOptions.auto : false;
         Object.defineProperty(kbOptions, 'tmp', {
             configurable: true,
             writable: true
         });
 
         if(kbOptions.auto === true) {
-            if(typeof window.FormData !== 'undefined') { 
+            if(typeof window.FormData !== 'undefined') {
                 if(kbOptions.data instanceof HTMLElement) {
                     kbOptions.data = new FormData(kbOptions.data);
                 } else if (typeof kbOptions.data === 'object' && kbOptions.data instanceof Array === false) {
@@ -61,7 +61,7 @@ var kickback = (function(kickback) {
                     kbOptions.data = kbOptions.tmp;
                     delete kbOptions.tmp;
                 }
-                
+
                 kbOptions.serialize = true;
             }
         }
@@ -69,12 +69,6 @@ var kickback = (function(kickback) {
         if(kbOptions.serialize === true) {
             kbOptions.data = _serialize(kbOptions.data);
         }
-
-        if(kbOptions.data instanceof FormData) {
-            console.log('formDATA');
-        } else {
-            console.log('notFormData');
-        } 
 
         return new Promise(function(resolve, reject) {
             var xhr = new XMLHttpRequest();
@@ -100,7 +94,7 @@ var kickback = (function(kickback) {
                 kbOptions.headers.value = kbOptions.headers.value || 'text/plain;charset=UTF-8';
                 xhr.setRequestHeader(kbOptions.headers.type, kbOptions.headers.value);
             }
-            
+
             if(kbOptions.headers === false && kbOptions.method.toLowerCase() === 'post' && kbOptions.serialize === true) {
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             }
