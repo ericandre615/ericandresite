@@ -1,45 +1,16 @@
 // - views/partials/content/about.jade
 
 section#about
-    button#toggle-code.mega-octicon.octicon-terminal
     h2 #[span(class="me") me]&period;#[span(class="me-title") about]
     div#bare-about.code-str
       p.
         Hello World, I'm a web developer in Nashville, TN. I enjoy learning about new technologies and languages. I strive to keep up to date
         with the constantly changing world of web development. Passionate about open source, programming fundamentals, and modular, reusable code.
-        I also have an ever growing interest in machine learning, code and how it relates to the physical world, and linear algebra.
+        I also have an ever growing interest in code and how it relates to the physical world, and linear algebra.
       p.
         While frameworks and libraries are helpful, I prefer to view things on a lower level and figure out how they actually work. Allowing me to implement
         custom solutions when the problem doesn't fit into a standard, generic box.
       p.
-        I also enjoy creating art, music, and design. A lover of animation and Japanese block printing. Currently, I have a growing love for synthesizers and electronics.
+        I also enjoy creating art, music, and design. A lover of animation, Japanese block printing, and the Japanese language (#[span(class="code-prop") 日本語が好きです]). Currently, I have a growing love for synthesizers and electronics.
         I like taking things apart to see how they work and building new things. Also, robots!
-    div#code-about(style="display:none;")
-        pre(style="margin: 0;").
-            <span class="code-var">var</span> <span>developer</span> <span class="code-eq">=</span> <span>{</span>
-            <span class="code-proto">  prototype</span><span>:</span> <span>{</span>
-            <span class="code-prop">    type</span><span>:</span> <span class="code-str">&#39;web&#39;</span><span>,</span>
-            <span class="code-prop">    about</span><span>:</span> <span class="code-str">&#39;&#39;</span><span>,</span>
-            <span class="code-prop">    name</span><span>:</span> <span class="code-str">&#39;&#39;</span><span>,</span>
-            <span class="code-prop">    skills</span><span>:</span> <span>[],</span>
-            <span class="code-prop">    work</span><span>:</span> <span>[],</span>
-            <span class="code-prop">    projects</span><span>:</span> <span>[],</span>
-            <span class="code-prop">    education</span><span>:</span> <span>[]</span>
-            <span>  },</span>
-            <span class="code-prop">  create</span><span>:</span> <span class="code-var">function</span> <span>create(<span class="code-params">options</span>)</span> <span>{</span>
-            <span>    options</span> <span class="code-eq">=</span> <span>options</span> <span class="code-op">||</span> <span>{};</span>
-            <span class="code-var">    var</span> <span>config</span> <span class="code-eq">=</span> <span>{</span>
-            <span class="code-prop">       type</span><span>:</span> {<span class="code-prop">value:</span> <span>options.type</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.type},
-            <span class="code-prop">       about</span><span>:</span> {<span class="code-prop">value:</span> <span>options.about</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.about},
-            <span class="code-prop">       name</span><span>:</span> {<span class="code-prop">value:</span> <span>options.name</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.name},
-            <span class="code-prop">       skills</span><span>:</span> {<span class="code-prop">value:</span> <span>options.skills</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.skills},
-            <span class="code-prop">       work</span><span>:</span> {<span class="code-prop">value:</span> <span>options.work</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.work},
-            <span class="code-prop">       projects</span><span>:</span> {<span class="code-prop">value:</span> <span>options.projects</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.projects},
-            <span class="code-prop">       education</span><span>:</span> {<span class="code-prop">value:</span> <span>options.eduction</span> <span class="code-op">||</span> developer.<span class="code-proto">prototype</span>.eduction},
-            <span>    }</span>
 
-            <span class="code-var">  return</span> <span class="code-obj">Object</span>.create(developer.<span class="code-proto">prototype</span>, <span>config);</span>
-            <span>  }</span>
-            <span>};</span>
-
-            <span class="code-var">var</span> <span>me</span> <span class="code-eq">=</span> <span>developer</span><span>.create(</span><span>{</span><span class="code-prop">name</span><span>:</span> <span class="code-str">&#39;Eric Andre&#39;</span><span style="color: #cccccc">}</span><span>);</span>
